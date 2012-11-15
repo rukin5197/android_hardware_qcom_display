@@ -117,7 +117,7 @@ static int gralloc_unmap(gralloc_module_t const* module,
         void* base = (void*)hnd->base;
         size_t size = hnd->size;
         sp<IMemAlloc> memalloc = getAllocator(hnd->flags) ;
-        if(memalloc != NULL)
+        if(memalloc != NULL) {
             err = memalloc->unmap_buffer(base, size, hnd->offset);
             if (err) {
                 ALOGE("Could not unmap memory at address %p", base);

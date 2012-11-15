@@ -150,7 +150,7 @@ int gpu_context_t::gralloc_alloc_buffer(size_t size, int usage,
         eData.pHandle = data.pHandle;
         eData.align = getpagesize();
         int eDataUsage = GRALLOC_USAGE_PRIVATE_SYSTEM_HEAP;
-        int eDataErr = mAllocCtrl->allocate(eData, eDataUsage);
+        int eDataErr = mAllocCtrl->allocate(eData, eDataUsage, 0);
         ALOGE_IF(eDataErr, "gralloc failed for eData err=%s", strerror(-err));
 
         if (usage & GRALLOC_USAGE_PRIVATE_UNSYNCHRONIZED) {
