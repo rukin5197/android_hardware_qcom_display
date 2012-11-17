@@ -164,16 +164,7 @@ void getLayerStats(hwc_context_t *ctx, const hwc_layer_list_t *list)
         // check if video layer is below skip layer
         if((isSkipLayer(&list->hwLayers[i]))) {
             if((yuvLayerIndex >= 0) && ((unsigned int)yuvLayerIndex<i)) {
-                // don't mark for interlaced videos
-                private_handle_t *yuv_hnd =
-                       (private_handle_t *)list->hwLayers[yuvLayerIndex].handle;
-                MetaData_t *metadata = (MetaData_t *)yuv_hnd->base_metadata;
-                if ((metadata->operation & PP_PARAM_INTERLACED) &&
-                                              metadata->interlaced) {
-                   //TODO update above condition for 3D vidos
-                } else {
-                   isYuvLayerSkip = true;
-                }
+                isYuvLayerSkip = true;
             }
         }
     }

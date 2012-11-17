@@ -149,7 +149,7 @@ inline bool OvMem::open(uint32_t numbufs,
         } else {
             allocFlags = GRALLOC_USAGE_PRIVATE_CAMERA_HEAP;
         }
-        err = mAlloc->allocate(data, allocFlags);
+        err = mAlloc->allocate(data, allocFlags, 0);
         if (err != 0) {
             ALOGE(" could not allocate from fallback heap");
             return false;
