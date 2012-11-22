@@ -75,11 +75,9 @@ static void *vsync_loop(void *param)
     // Open the secondary display vsync_event sysfs node
     if(ctx->mMDP.hasOverlay) {
         fb1_timestamp = open(vsync_timestamp_fb1, O_RDONLY);
-        if (fb1_timestamp < 0) {
-            ALOGE("FATAL:%s:not able to open file:%s, %s",  __FUNCTION__,
+        if (fb1_timestamp < 0)
+            ALOGW("WARN:%s:not able to open file:%s, %s",  __FUNCTION__,
                                         vsync_timestamp_fb1, strerror(errno));
-            return NULL;
-        }
     }
 
 
