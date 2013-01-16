@@ -208,8 +208,9 @@ bool configExtVid(hwc_context_t *ctx, hwc_layer_t *layer) {
     //Only for External
     ov.setCrop(dcrop, ovutils::OV_PIPE1);
 
-    //use sourceTransform only for External
-    ov.setTransform(layer->sourceTransform, ovutils::OV_PIPE1);
+    ovutils::eTransform orient =
+            static_cast<ovutils::eTransform>(layer->transform);
+    ov.setTransform(orient, ovutils::OV_PIPE1);
 
     ovutils::Dim dpos;
     hwc_rect_t displayFrame = layer->displayFrame;
